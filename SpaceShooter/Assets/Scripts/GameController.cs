@@ -98,7 +98,7 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverText.text = "Game Over! ";
+        gameOverText.text = "Game Over! Made by Nick Hennessy";
         gameOver = true;
     }
 
