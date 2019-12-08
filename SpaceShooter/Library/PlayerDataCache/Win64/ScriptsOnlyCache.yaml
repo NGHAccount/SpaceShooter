@@ -614,7 +614,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: 771eb50682dc4864dd0e27094c1aa245
+      Hash: 2401a068a4c69462591754e91bc3d937
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -626,7 +626,7 @@ ScriptsOnlyBuild:
     className: RandomRotator
   - hash:
       serializedVersion: 2
-      Hash: be2d1663d6bc8ce39ce9c8dea6a963c7
+      Hash: cc1e9c992f0cbf808ea1daee31a32a40
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BGScroller
@@ -816,7 +816,19 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: b53ca7e99a63aae6ee262486dc623b2e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BoostContact
+  - hash:
+      serializedVersion: 2
+      Hash: c9087d99e22039528856fbd9eda13258
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CountdownTimer
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: E:/GitHubRepos/SpaceShooter/SpaceShooter/SpaceShooter/Builds/Challenge_3/SpaceShooter.exe
+  playerPath: E:/GitHubRepos/SpaceShooter/SpaceShooter/SpaceShooter/Builds/Final/SpaceShooter.exe

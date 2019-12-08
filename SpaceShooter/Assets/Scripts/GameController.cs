@@ -16,10 +16,22 @@ public class GameController : MonoBehaviour
     public Text restartText;
     public Text gameOverText;
     public Text winText;
+    public Text countdownText;
+    public Text countLossText;
+    public AudioSource audioSource;
+    public AudioClip clip;
+    public AudioClip clip2;
+    float currentTime = 0f;
+    float startingTime = 10f;
+
+    private Mover mover;
+    private BGScroller scroller;
 
     private bool gameOver;
     private bool restart;
-    private int score;
+    public bool timing = false;
+    private bool win = false;
+    public int score;
 
     void Start()
     {
@@ -28,13 +40,17 @@ public class GameController : MonoBehaviour
         restartText.text = "";
         gameOverText.text = "";
         winText.text = "";
+        countdownText.text = "";
+        countLossText.text = "";
         score = 0;
         UpdateScore();
         StartCoroutine (SpawnWaves());
+        currentTime = startingTime;
     }
 
     void Update()
     {
+        //currentTime -= 1 * Time.deltaTime;
 
         if (restart)
         {
@@ -49,6 +65,47 @@ public class GameController : MonoBehaviour
         {
             Application.Quit();
         }
+
+        if (Input.GetKey(KeyCode.F))
+        {
+            //waveWait = waveWait * 0.1;
+            //hazardCount = hazardCount * 5;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            timing = true;
+            Debug.Log("Timing is now true");
+
+            
+
+            if (timing == true)
+            {
+                currentTime -= 1 * Time.deltaTime;
+                //Debug.Log("-1");
+                countdownText.text = currentTime.ToString("0");
+                //Debug.Log("going");
+
+                if (currentTime <= 0)
+                {
+                    currentTime = 0;
+                    GameOver();
+                    countLossText.text = "You gambled with your time and lost!";
+                    audioSource.clip = clip2;
+                    audioSource.Play();
+                }
+
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+
+            timing = false;
+            Debug.Log("Timing is now false");
+        }
+
+
     }
 
     IEnumerator SpawnWaves()
@@ -93,12 +150,27 @@ public class GameController : MonoBehaviour
             winText.text = "You Win! Game made by Nick Hennessy";
             gameOver = true;
             restart = true;
+            audioSource.clip = clip;
+            audioSource.Play();
+            win = true;
+            countdownText.text = "";
+            
+        }
+
+        if(gameOver == true && score < 100)
+        {
+            audioSource.clip = clip2;
+            audioSource.Play();
+
         }
     }
 
     public void GameOver()
     {
-        gameOverText.text = "Game Over! Made by Nick Hennessy";
+        if (win == false)
+        {
+            gameOverText.text = "Game Over! Made by Nick Hennessy";
+        }
         gameOver = true;
     }
 
